@@ -6,9 +6,22 @@
       color="primary"
       *ngFor="let category of categories"
       [value]="category"
-      (change)="updateCategory($event)"
+      (change)="filterByCategory($event)"
     >
       {{category}} ({{getCategoryCount(category)}})
+    </mat-checkbox>
+  </div>
+
+  <div class="filtration-block">
+    <h2>Сuisine</h2>
+    <mat-divider [inset]="true"></mat-divider>
+    <mat-checkbox
+      color="primary"
+      *ngFor="let cuisine of cuisines"
+      [value]="cuisine"
+      (change)="filterByCuisine($event)"
+    >
+      {{cuisine}} ({{getCuisineCount(cuisine)}})
     </mat-checkbox>
   </div>
 
@@ -21,10 +34,28 @@
       step="1"
       [max]="maxAveragePricing"
       [value]="maxAveragePricing"
-      (input)="updatePricing($event)"
+      (input)="filterByPricing($event)"
     >
     </mat-slider>
     <div class="price-info" *ngIf="pricingValue">Average check range: <span>0 - {{pricingValue}}$</span></div>
     <div class="price-info" *ngIf="!pricingValue">Average check range: <span>0</span></div>
   </div>
+
+  <div class="filtration-block">
+    <h2>Availability time</h2>
+  </div>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Available delivery (24h)</mat-label>
+    <mat-select
+      (selectionChange)="filterByAvailabilityTime($event)">
+      <mat-option>None</mat-option>
+      <mat-option
+        *ngFor="let time of availableTime"
+        [value]="time"
+      >
+        {{time}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 </mat-card>

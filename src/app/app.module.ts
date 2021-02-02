@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatSelectModule } from '@angular/material/select';
 import { FiltrationComponent } from './filtration/filtration.component';
 
 @NgModule({
@@ -31,6 +32,7 @@ import { FiltrationComponent } from './filtration/filtration.component';
     MatCheckboxModule,
     MatDividerModule,
     MatSliderModule,
+    MatSelectModule,
   ],
   providers: [ApiProvider],
   bootstrap: [AppComponent],

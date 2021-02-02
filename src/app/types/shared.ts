@@ -10,4 +10,6 @@ export interface DeliveryItem {
   rating: number,
   popularity: string,
   img: string,
+  workTimeStart: number;
+  workTimeEnd: number;
 }
