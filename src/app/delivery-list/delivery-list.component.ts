@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiProvider } from '../services/api';
+import { DeliveryItem } from '../types/shared';
 
 @Component({
   selector: 'app-delivery-list',
@@ -8,7 +9,7 @@ import { ApiProvider } from '../services/api';
 })
 
 export class DeliveryListComponent implements OnInit {
-  deliveryList: any = [];
+  deliveryList: DeliveryItem[] = [];
 
   constructor(private apiProvider: ApiProvider) {}
 

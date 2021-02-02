@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-delivery-item',
+  selector: 'delivery-item',
   templateUrl: './delivery-item.component.html',
   styleUrls: ['./delivery-item.component.scss']
 })
 export class DeliveryItemComponent implements OnInit {
-
-  constructor() { }
+  @Input() name: string;
+  @Input() imgSrc: string;
+  @Input() time: number;
+  @Input() rating: string;
+  @Input() pricing: number;
 
   ngOnInit(): void {
+    this.time = this.time / 60;
   }
-
 }

@@ -9,6 +9,7 @@ import { ApiProvider } from './services/api';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DeliveryItemComponent } from './delivery-item/delivery-item.component';
 import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { MatCardModule } from '@angular/material/card';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCardModule,
+    MatIconModule,
   ],
   providers: [ApiProvider],
   bootstrap: [AppComponent],

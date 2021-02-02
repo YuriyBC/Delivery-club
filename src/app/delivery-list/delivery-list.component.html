@@ -1,5 +1,13 @@
-<div *ngFor="let delivery of deliveryList">
-  <mat-card>
-    <span class="badge">{{delivery.name}}</span>
-  </mat-card>
+<div class="delivery-container">
+  <delivery-item
+    class="delivery-item"
+    *ngFor="let delivery of deliveryList"
+    [name]="delivery.name"
+    [imgSrc]="delivery.img"
+    [time]="delivery.delivery_time_average"
+    [rating]="delivery.rating"
+    [pricing]="delivery.price_average"
+  >
+  </delivery-item>
 </div>
+

@@ -1,1 +1,23 @@
-<p>delivery-item works!</p>
+<mat-card>
+  <div class="delivery-item__image-container">
+    <img src="{{imgSrc}}" alt="{{name}} image">
+  </div>
+  <div class="delivery-item__content">
+    <mat-card-title>{{name}}</mat-card-title>
+    <div class="delivery-item-options">
+      <div class="delivery-item-info delivery-item-info--green">
+        <mat-icon aria-hidden="false" aria-label="Timer icon">multiline_chart</mat-icon>
+        <span>{{time}} мин</span>
+      </div>
+      <div class="delivery-item-info">
+        <mat-icon aria-hidden="false" aria-label="Timer icon">star_half</mat-icon>
+        <span>{{rating}}</span>
+      </div>
+      <div class="delivery-item-info">
+        <mat-icon aria-hidden="false" aria-label="Timer icon">assignment</mat-icon>
+        <span>средний чек {{pricing}}$</span>
+      </div>
+    </div>
+  </div>
+</mat-card>
+
