@@ -16,7 +16,7 @@ export class FiltrationComponent implements OnChanges {
   maxAveragePricing: number;
   pricingValue: number;
   filtratedCategories: string[] = [];
-  
+
 
   getAvailableCategories () {
     return [...new Set(this.deliveryList.reduce(( reducer: string[], item) => {
