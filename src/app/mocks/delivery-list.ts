@@ -1,0 +1,28 @@
+export default [
+  {
+    id: 2131,
+    name: 'PIZZA ITALIANO',
+    category: ['Soup', 'Pizza', 'Burger'],
+    cuisine: ['Italian'],
+    price_average: 10,
+    price_currency: 'USD',
+    delivery_time_average: 3300,
+    delivery_distance_average: 20000,
+    rating: '4.2',
+    popularity: '2130',
+    img: 'https://www.delivery-club.ru/srv/BRON',
+  },
+  {
+    id: 2132,
+    name: 'SUSHI SHOP',
+    category: ['Soup', 'Cake', 'Sushi', 'Rolls'],
+    cuisine: ['Japanese', 'Chinese'],
+    price_average: 8,
+    price_currency: 'USD',
+    delivery_time_average: 3000,
+    delivery_distance_average: 10000,
+    rating: '4.3',
+    popularity: '1130',
+    img: 'https://www.delivery-club.ru/srv/sushimarkjet_moskva',
+  },
+];
