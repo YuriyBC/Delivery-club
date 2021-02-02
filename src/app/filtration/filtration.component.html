@@ -43,19 +43,35 @@
 
   <div class="filtration-block">
     <h2>Availability time</h2>
+    <mat-divider [inset]="true"></mat-divider>
+    <mat-form-field appearance="fill">
+      <mat-label>Available delivery (24h)</mat-label>
+      <mat-select
+        (selectionChange)="filterByAvailabilityTime($event)">
+        <mat-option>None</mat-option>
+        <mat-option
+          *ngFor="let time of availableTime"
+          [value]="time"
+        >
+          {{time}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Available delivery (24h)</mat-label>
-    <mat-select
-      (selectionChange)="filterByAvailabilityTime($event)">
-      <mat-option>None</mat-option>
-      <mat-option
-        *ngFor="let time of availableTime"
-        [value]="time"
-      >
-        {{time}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+  <div class="filtration-block">
+    <h2>Delivery range</h2>
+    <mat-divider [inset]="true"></mat-divider>
+    <mat-slider
+      color="primary"
+      min="0"
+      step="1000"
+      [max]="maxDistanceRange"
+      [value]="maxDistanceRange"
+      (input)="filterByRange($event)"
+    >
+    </mat-slider>
+    <div class="price-info" *ngIf="distanceRange">Distance range: <span>0 - {{distanceRange}}km</span></div>
+    <div class="price-info" *ngIf="!distanceRange">Distance range: <span>0</span></div>
+  </div>
 </mat-card>

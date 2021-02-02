@@ -20,6 +20,8 @@ export class FiltrationComponent implements OnChanges {
   filtratedCategories: string[] = [];
   filtratedCuisines: string[] = [];
   availableTime: string[];
+  maxDistanceRange: number;
+  distanceRange: number;
 
   constructor (private filtrationService: FiltrationHelperService) {}
 
@@ -29,6 +31,8 @@ export class FiltrationComponent implements OnChanges {
     this.maxAveragePricing = this.filtrationService.getMaxPricing(this.deliveryList);
     this.pricingValue = this.maxAveragePricing;
     this.availableTime = this.filtrationService.getAvailableTime();
+    this.maxDistanceRange = this.filtrationService.getMaxRange(this.deliveryList);
+    this.distanceRange = this.maxDistanceRange;
   }
 
   filterByCategory ($event: MatCheckboxChange) {
@@ -84,7 +88,17 @@ export class FiltrationComponent implements OnChanges {
     this.pricingValue = +$event.value;
 
     const filtratedList = this.deliveryList.filter((item => {
-      return item.price_average >= this.pricingValue;
+      return item.price_average <= this.pricingValue;
+    }));
+
+    this.updateDeliveryList.emit(filtratedList);
+  }
+
+  filterByRange ($event: any) {
+    this.distanceRange = +$event.value;
+
+    const filtratedList = this.deliveryList.filter((item => {
+      return this.distanceRange >= item.delivery_distance_average;
     }));
 
     this.updateDeliveryList.emit(filtratedList);

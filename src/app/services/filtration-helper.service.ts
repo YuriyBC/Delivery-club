@@ -31,6 +31,16 @@ export class FiltrationHelperService {
     }, 0);
   }
 
+  getMaxRange (deliveryList: DeliveryItem[]) {
+    return deliveryList.reduce((reducer, item) => {
+      if (item.delivery_distance_average > reducer) {
+        return item.delivery_distance_average;
+      }
+
+      return reducer;
+    }, 0);
+  }
+
   getCountByField (deliveryList: DeliveryItem[], field: string, value: string) {
     return deliveryList.reduce((reducer, item) => {
       // @ts-ignore

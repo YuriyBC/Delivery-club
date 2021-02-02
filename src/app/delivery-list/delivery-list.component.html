@@ -9,5 +9,6 @@
     [pricing]="delivery.price_average"
   >
   </delivery-item>
+  <div *ngIf="!deliveryList.length" class="delivery-empty-text">No items found</div>
 </div>
 

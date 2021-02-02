@@ -1,9 +1,18 @@
 .delivery-container {
   display: flex;
+  padding: 1rem;
   width: 100%;
   flex-wrap: wrap;
+  align-items: center;
 
   .delivery-item {
     width: 380px;
+  }
+
+  .delivery-empty-text {
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    color: gray;
   }
 }
