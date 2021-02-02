@@ -1,7 +1,7 @@
 .filtration {
-  padding: 1rem;
+  padding: 1rem 1rem 100px 1rem;
   width: 230px;
-  height: 500px;
+  height: auto;
   border-radius: 0.5rem;
   overflow: hidden;
 
@@ -18,10 +18,18 @@
   &-block {
     display: flex;
     flex-direction: column;
+    margin-bottom: 1rem;
   }
 
   .mat-checkbox {
     font-size: 1rem;
-    margin-bottom: 0.3rem;
+  }
+
+  .price-info {
+    span {
+      font-weight: bold;
+      transform: translateY(1px);
+      display: inline-block;
+    }
   }
 }

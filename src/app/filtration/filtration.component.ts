@@ -13,6 +13,8 @@ export class FiltrationComponent implements OnChanges {
   @Output() updateDeliveryList = new EventEmitter();
 
   categories: string[];
+  maxAveragePricing: number;
+  pricingValue: number;
   filtratedCategories: string[] = [];
 
   constructor() { }
@@ -26,8 +28,20 @@ export class FiltrationComponent implements OnChanges {
     }, []))];
   }
 
+  getMaxPricing () {
+    return this.deliveryList.reduce((reducer, item) => {
+      if (item.price_average > reducer) {
+        return item.price_average;
+      }
+
+      return reducer;
+    }, 0);
+  }
+
   ngOnChanges(): void {
     this.categories = this.getAvailableCategories();
+    this.maxAveragePricing = this.getMaxPricing();
+    this.pricingValue = this.maxAveragePricing;
   }
 
   updateCategory ($event: MatCheckboxChange) {
@@ -45,6 +59,16 @@ export class FiltrationComponent implements OnChanges {
     }));
 
     this.updateDeliveryList.emit(this.filtratedCategories.length ? filtratedList : this.deliveryList);
+  }
+
+  updatePricing ($event: any) {
+    this.pricingValue = +$event.value;
+
+    const filtratedList = this.deliveryList.filter((item => {
+      return item.price_average >= this.pricingValue;
+    }));
+
+    this.updateDeliveryList.emit(filtratedList);
   }
 
   getCategoryCount (category: string) {
