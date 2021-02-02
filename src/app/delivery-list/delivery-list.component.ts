@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiProvider } from '../services/api';
+import { Component, Input, OnInit } from '@angular/core';
 import { DeliveryItem } from '../types/shared';
 
 @Component({
@@ -9,11 +8,7 @@ import { DeliveryItem } from '../types/shared';
 })
 
 export class DeliveryListComponent implements OnInit {
-  deliveryList: DeliveryItem[] = [];
+  @Input() deliveryList: DeliveryItem[] = [];
 
-  constructor(private apiProvider: ApiProvider) {}
-
-  async ngOnInit() {
-    this.deliveryList = await this.apiProvider.getDeliveryList();
-  }
+  async ngOnInit() {}
 }

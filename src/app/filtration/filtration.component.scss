@@ -1,0 +1,27 @@
+.filtration {
+  padding: 1rem;
+  width: 230px;
+  height: 500px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+
+  h2 {
+    margin-bottom: 0.5rem;
+  }
+
+  .mat-divider {
+    margin-bottom: 1rem;
+    margin-left: -1rem;
+    width: 125%;
+  }
+
+  &-block {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mat-checkbox {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+}

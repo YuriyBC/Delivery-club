@@ -28,7 +28,7 @@ export default [
   {
     id: 2133,
     name: 'Taunuki',
-    category: ['Soup', 'Cake', 'Sushi', 'Rolls'],
+    category: ['Soup'],
     cuisine: ['Japanese', 'Chinese'],
     price_average: 6,
     price_currency: 'USD',
@@ -41,7 +41,7 @@ export default [
   {
     id: 2133,
     name: 'Subway',
-    category: ['Soup', 'Cake', 'Sushi', 'Rolls'],
+    category: ['Coffie'],
     cuisine: ['Japanese', 'Chinese'],
     price_average: 23,
     price_currency: 'USD',

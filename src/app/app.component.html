@@ -1,3 +1,6 @@
 <app-header></app-header>
-<app-delivery-list></app-delivery-list>
+<div class="app-content">
+  <app-filtration (updateDeliveryList)="updateDeliveryList($event)" [deliveryList]="deliveryList"></app-filtration>
+  <app-delivery-list [deliveryList]="updatedDeliveryList"></app-delivery-list>
+</div>
 <router-outlet></router-outlet>

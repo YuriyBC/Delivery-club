@@ -1,0 +1,14 @@
+<mat-card class="filtration">
+  <div class="filtration-block">
+    <h2>Category</h2>
+    <mat-divider [inset]="true"></mat-divider>
+    <mat-checkbox
+      *ngFor="let category of categories"
+      color="primary"
+      [value]="category"
+      (change)="updateCategory($event)"
+    >
+      {{category}} ({{getCategoryCount(category)}})
+    </mat-checkbox>
+  </div>
+</mat-card>
