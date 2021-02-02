@@ -7,7 +7,7 @@ export interface DeliveryItem {
   price_currency: string,
   delivery_time_average: number,
   delivery_distance_average: number,
-  rating: string,
+  rating: number,
   popularity: string,
   img: string,
 }
