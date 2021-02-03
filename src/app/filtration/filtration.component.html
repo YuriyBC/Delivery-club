@@ -37,8 +37,8 @@
       (input)="filterByPricing($event)"
     >
     </mat-slider>
-    <div class="price-info" *ngIf="pricingValue">Average check range: <span>0 - {{pricingValue}}$</span></div>
-    <div class="price-info" *ngIf="!pricingValue">Average check range: <span>0</span></div>
+    <div class="price-info" *ngIf="filterCollection.pricing">Average check range: <span>0 - {{filterCollection.pricing}}$</span></div>
+    <div class="price-info" *ngIf="!filterCollection.pricing">Average check range: <span>0</span></div>
   </div>
 
   <div class="filtration-block">

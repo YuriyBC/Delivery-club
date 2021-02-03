@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {DeliveryItem} from "../types/shared";
+import { ActiveFilters, DeliveryItem } from "../types/shared";
 
 @Injectable({
   providedIn: 'root'
@@ -61,5 +61,64 @@ export class FiltrationHelperService {
     }
 
     return timeCollection;
+  }
+
+  getFilteredDeliveryList (deliveryCollection: DeliveryItem[], filterSettings: ActiveFilters) {
+    let deliveryList = [...deliveryCollection];
+
+    Object.entries(filterSettings).forEach(([key, value]: any) => {
+      switch (key) {
+        case 'categories':
+          if (!value.length) {
+            break;
+          }
+
+          deliveryList = deliveryList.filter((item => (
+            !!item.category.find(item => (
+              value.indexOf(item) !== -1
+            ))
+          )));
+
+          break;
+        case 'cuisines':
+          if (!value.length) {
+            break;
+          }
+
+          deliveryList = deliveryList.filter((item => {
+            return !!item.cuisine.find(item => (
+              value.indexOf(item) !== -1
+            ));
+          }));
+
+          break;
+        case 'availabilityTime':
+          if (typeof value !== 'number') {
+            break;
+          }
+
+          deliveryList = deliveryList.filter((item => (
+            item.workTimeStart <= value && (!item.workTimeEnd ? true : value < item.workTimeEnd)
+          )));
+
+          break;
+        case 'pricing':
+          if (typeof value !== 'number') {
+            break;
+          }
+
+          deliveryList = deliveryList.filter((item => item.price_average <= value));
+          break;
+        case 'range':
+          if (typeof value !== 'number') {
+            break;
+          }
+
+          deliveryList = deliveryList.filter((item => value >= item.delivery_distance_average));
+          break;
+      }
+    });
+
+    return deliveryList;
   }
 }

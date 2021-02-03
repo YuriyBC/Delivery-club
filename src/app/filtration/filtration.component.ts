@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
-import { DeliveryItem } from '../types/shared';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { FiltrationHelperService } from '../services/filtration-helper.service';
+import { ActiveFilters, DeliveryItem } from '../types/shared';
 
 @Component({
   selector: 'app-filtration',
@@ -12,24 +12,33 @@ import { FiltrationHelperService } from '../services/filtration-helper.service';
 export class FiltrationComponent implements OnChanges {
   @Input() deliveryList: DeliveryItem[] = [];
   @Output() updateDeliveryList = new EventEmitter();
+  updatedDeliveryList: DeliveryItem[] = [];
 
   categories: string[];
   cuisines: string[];
   maxAveragePricing: number;
-  pricingValue: number;
-  filtratedCategories: string[] = [];
-  filtratedCuisines: string[] = [];
   availableTime: string[];
   maxDistanceRange: number;
   distanceRange: number;
+  filterCollection: ActiveFilters = {
+    categories: [],
+    cuisines: [],
+    availabilityTime: null,
+    pricing: null,
+    range: null,
+  };
 
   constructor (private filtrationService: FiltrationHelperService) {}
 
   ngOnChanges(): void {
+    if (!this.updatedDeliveryList.length) {
+      this.updatedDeliveryList = this.deliveryList;
+    }
+
     this.categories = this.filtrationService.getAvailableCategories(this.deliveryList);
     this.cuisines = this.filtrationService.getAvailableCuisines(this.deliveryList);
     this.maxAveragePricing = this.filtrationService.getMaxPricing(this.deliveryList);
-    this.pricingValue = this.maxAveragePricing;
+    this.filterCollection.pricing = this.maxAveragePricing;
     this.availableTime = this.filtrationService.getAvailableTime();
     this.maxDistanceRange = this.filtrationService.getMaxRange(this.deliveryList);
     this.distanceRange = this.maxDistanceRange;
@@ -37,71 +46,52 @@ export class FiltrationComponent implements OnChanges {
 
   filterByCategory ($event: MatCheckboxChange) {
     if ($event.checked) {
-      this.filtratedCategories.push($event.source.value);
+      this.filterCollection.categories.push($event.source.value);
     } else {
-      const index = this.filtratedCategories.indexOf($event.source.value);
-      this.filtratedCategories.splice(index, 1);
+      const index = this.filterCollection.categories.indexOf($event.source.value);
+      this.filterCollection.categories.splice(index, 1);
     }
 
-    const filtratedList = this.deliveryList.filter((item => {
-      return !!item.category.find(item => (
-        this.filtratedCategories.indexOf(item) !== -1
-      ));
-    }));
-
-    this.updateDeliveryList.emit(this.filtratedCategories.length ? filtratedList : this.deliveryList);
+    this.syncFilters();
   }
 
   filterByCuisine ($event: MatCheckboxChange) {
     if ($event.checked) {
-      this.filtratedCuisines.push($event.source.value);
+      this.filterCollection.cuisines.push($event.source.value);
     } else {
-      const index = this.filtratedCuisines.indexOf($event.source.value);
-      this.filtratedCuisines.splice(index, 1);
+      const index = this.filterCollection.cuisines.indexOf($event.source.value);
+      this.filterCollection.cuisines.splice(index, 1);
     }
 
-    const filtratedList = this.deliveryList.filter((item => {
-      return !!item.cuisine.find(item => (
-        this.filtratedCuisines.indexOf(item) !== -1
-      ));
-    }));
-
-    this.updateDeliveryList.emit(this.filtratedCuisines.length ? filtratedList : this.deliveryList);
+    this.syncFilters();
   }
 
   filterByAvailabilityTime ($event: any) {
     const secondsModifier = 3600;
 
     if (!$event.value) {
-      return this.updateDeliveryList.emit(this.deliveryList);
+      this.filterCollection.availabilityTime = null;
+    } else {
+      this.filterCollection.availabilityTime = +$event.value.split(':')[0] * secondsModifier;
     }
 
-    const selectedTime = +$event.value.split(':')[0] * secondsModifier;
-    const filtratedList = this.deliveryList.filter((item => (
-      item.workTimeStart <= selectedTime && (!item.workTimeEnd ? true : selectedTime < item.workTimeEnd)
-    )));
-
-    this.updateDeliveryList.emit(filtratedList);
+    this.syncFilters();
   }
 
   filterByPricing ($event: any) {
-    this.pricingValue = +$event.value;
-
-    const filtratedList = this.deliveryList.filter((item => {
-      return item.price_average <= this.pricingValue;
-    }));
-
-    this.updateDeliveryList.emit(filtratedList);
+    this.filterCollection.pricing = +$event.value;
+    this.syncFilters();
   }
 
   filterByRange ($event: any) {
-    this.distanceRange = +$event.value;
+    this.filterCollection.range = +$event.value;
+    this.syncFilters();
+  }
 
-    const filtratedList = this.deliveryList.filter((item => {
-      return this.distanceRange >= item.delivery_distance_average;
-    }));
+  syncFilters () {
+    const deliveryList = this.filtrationService.getFilteredDeliveryList(this.deliveryList, this.filterCollection);
 
-    this.updateDeliveryList.emit(filtratedList);
+    this.updateDeliveryList.emit(deliveryList);
   }
 
   getCategoryCount (category: string) {
