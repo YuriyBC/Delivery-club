@@ -1,0 +1,14 @@
+<mat-card class="sorting-panel">
+  <div class="sorting-panel__label">Sorting by:</div>
+  <mat-form-field appearance="fill">
+    <mat-select
+      class="sorting-panel__filed"
+      [value]="defaultOption"
+      (selectionChange)="sortElements($event)"
+    >
+      <mat-option *ngFor="let item of sortingOptions" [value]="item.value">
+        {{item.displayName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-card>

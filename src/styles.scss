@@ -10,6 +10,14 @@ body {
   background: #E0E0E0;
 }
 
+.sorting-panel .mat-form-field-flex {
+  padding-top: 0 !important;
+}
+
+.sorting-panel .mat-select-arrow-wrapper {
+  transform: translateY(0) !important;
+}
+
 * {
   box-sizing: border-box;
 }

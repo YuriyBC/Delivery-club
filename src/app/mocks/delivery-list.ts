@@ -43,7 +43,7 @@ export default [
     rating: 4.2432,
     workTimeStart: 46800, // 13:00
     workTimeEnd: 0, // 00:00
-    popularity: '1330',
+    popularity: '130',
     img: 'https://www.delivery-club.ru/naturmort/5ce524391a77c_480x300.jpg?resize=fill&width=480&height=480&gravity=ce&out=webp',
   },
   {

@@ -11,6 +11,7 @@ import { DeliveryItem } from './types/shared';
 export class AppComponent implements OnInit {
   deliveryList: DeliveryItem[] = [];
   updatedDeliveryList: DeliveryItem[] = [];
+  sortingOption: string = '';
 
   public constructor(
     private titleService: Title,
@@ -24,7 +25,46 @@ export class AppComponent implements OnInit {
     this.updatedDeliveryList = this.deliveryList;
   }
 
+  updateSortingOption (option: string) {
+    this.sortingOption = option;
+    this.updateDeliveryList(this.updatedDeliveryList);
+  }
+
+  sortBy (deliveryList: DeliveryItem[]) {
+    return deliveryList.sort((a: DeliveryItem, b: DeliveryItem) => {
+      if (this.sortingOption === 'name') {
+        if (a.name < b.name) { return -1; }
+        if (a.name > b.name) { return 1; }
+
+        return 0;
+      }
+
+      if (this.sortingOption === 'time') {
+        if (a.delivery_time_average < b.delivery_time_average) { return -1; }
+        if (a.delivery_time_average > b.delivery_time_average) { return 1; }
+
+        return 0;
+      }
+
+      if (this.sortingOption === 'rating') {
+        if (a.rating < b.rating) { return -1; }
+        if (a.rating > b.rating) { return 1; }
+
+        return 0;
+      }
+
+      if (this.sortingOption === 'popularity') {
+        if (+a.popularity < +b.popularity) { return 1; }
+        if (+a.popularity > +b.popularity) { return -1; }
+
+        return 0;
+      }
+
+      return 0;
+    });
+  }
+
   updateDeliveryList (deliveryList: DeliveryItem[]) {
-    this.updatedDeliveryList = deliveryList;
+    this.updatedDeliveryList = this.sortBy(deliveryList);
   }
 }

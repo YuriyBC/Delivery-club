@@ -21,3 +21,8 @@ export interface ActiveFilters {
   pricing: number | null;
   range: number | null;
 }
+
+export interface SortingOption {
+  displayName: string;
+  value: string;
+}

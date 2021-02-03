@@ -14,6 +14,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSelectModule } from '@angular/material/select';
 import { FiltrationComponent } from './filtration/filtration.component';
+import { SortingPanelComponent } from './sorting-panel/sorting-panel.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FiltrationComponent } from './filtration/filtration.component';
     HeaderComponent,
     DeliveryListComponent,
     DeliveryItemComponent,
-    FiltrationComponent
+    FiltrationComponent,
+    SortingPanelComponent
   ],
   imports: [
     BrowserModule,

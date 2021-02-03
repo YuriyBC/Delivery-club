@@ -1,0 +1,15 @@
+.sorting-panel {
+  height: 75px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0 1rem;
+
+  &__label {
+    margin-right: 0.5rem;
+  }
+
+  mat-form-field {
+    transform: translateY(10px);
+  }
+}
