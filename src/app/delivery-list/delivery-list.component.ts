@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { DeliveryItem } from '../types/shared';
 
 @Component({
@@ -7,8 +7,7 @@ import { DeliveryItem } from '../types/shared';
   styleUrls: ['./delivery-list.component.scss']
 })
 
-export class DeliveryListComponent implements OnInit {
+export class DeliveryListComponent {
   @Input() deliveryList: DeliveryItem[] = [];
-
-  async ngOnInit() {}
+  @Output() onProductClicked = new EventEmitter();
 }

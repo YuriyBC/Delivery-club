@@ -1,0 +1,19 @@
+<app-header></app-header>
+<div class="app-content">
+  <app-filtration
+    (updateDeliveryList)="updateDeliveryList($event)"
+    [deliveryList]="deliveryList">
+  </app-filtration>
+  <div class="app-content__right">
+    <app-sorting-panel
+      (updateSortingOption)="updateSortingOption($event)"
+      [deliveryList]="updatedDeliveryList"
+    >
+    </app-sorting-panel>
+    <app-delivery-list
+      [deliveryList]="updatedDeliveryList"
+      (onProductClicked)="onProductClicked($event)"
+    >
+    </app-delivery-list>
+  </div>
+</div>

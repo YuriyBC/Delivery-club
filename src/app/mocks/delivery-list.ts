@@ -47,7 +47,7 @@ export default [
     img: 'https://www.delivery-club.ru/naturmort/5ce524391a77c_480x300.jpg?resize=fill&width=480&height=480&gravity=ce&out=webp',
   },
   {
-    id: 2133,
+    id: 2134,
     name: 'Subway',
     category: ['Coffie'],
     cuisine: ['Japanese', 'Chinese'],

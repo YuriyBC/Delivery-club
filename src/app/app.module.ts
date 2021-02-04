@@ -15,6 +15,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatSelectModule } from '@angular/material/select';
 import { FiltrationComponent } from './filtration/filtration.component';
 import { SortingPanelComponent } from './sorting-panel/sorting-panel.component';
+import { DeliveryDetailsPage } from './delivery-details-page/delivery-details-page.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { SortingPanelComponent } from './sorting-panel/sorting-panel.component';
     DeliveryListComponent,
     DeliveryItemComponent,
     FiltrationComponent,
-    SortingPanelComponent
+    SortingPanelComponent,
+    DeliveryDetailsPage,
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,

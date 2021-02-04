@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'delivery-item',
@@ -11,6 +11,8 @@ export class DeliveryItemComponent implements OnInit {
   @Input() time: number;
   @Input() rating: number;
   @Input() pricing: number;
+  @Input() id: number;
+  @Output() onProductClicked = new EventEmitter();
 
   formattedRating: string;
 

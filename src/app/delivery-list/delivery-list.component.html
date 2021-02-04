@@ -7,6 +7,8 @@
     [time]="delivery.delivery_time_average"
     [rating]="delivery.rating"
     [pricing]="delivery.price_average"
+    [id]="delivery.id"
+    (onProductClicked)="onProductClicked.emit($event)"
   >
   </delivery-item>
   <div *ngIf="!deliveryList.length" class="delivery-empty-text">No items found</div>

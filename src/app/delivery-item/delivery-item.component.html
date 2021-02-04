@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card (click)="onProductClicked.emit(id)">
   <div class="delivery-item__image-container">
     <img src="{{imgSrc}}" alt="{{name}} image">
   </div>
@@ -20,4 +20,3 @@
     </div>
   </div>
 </mat-card>
-
