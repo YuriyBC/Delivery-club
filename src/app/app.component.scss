@@ -1,3 +1,8 @@
 .app-content {
   display: flex;
+
+  &__right {
+    width: calc(100vw - 250px);
+  }
 }
+
