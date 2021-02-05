@@ -1,0 +1,96 @@
+.delivery-info {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: calc(70px + 1rem);
+
+  &__image-container {
+    height: 250px;
+    width: 75vw;
+    display: flex;
+    overflow: hidden;
+    border-radius: 15px;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__logo-container {
+    position: absolute;
+    left: 14vw;
+    top: calc(250px - 40px);
+    width: 80px;
+    height: 80px;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 1;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__main {
+    width: 75vw;
+    padding-top: 2rem;
+    margin-top: 1rem;
+  }
+
+  &__menu {
+    margin: 1rem 5rem;
+
+    &-item {
+      position: relative;
+      display: flex;
+      margin-bottom: 1rem;
+
+      img {
+        margin-right: 1rem;
+      }
+
+      &-description {
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+      }
+
+      &-bottom {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        flex-grow: 1;
+      }
+
+      &-quantity {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        button {
+          margin-bottom: 0.5rem;
+        }
+
+        div {
+          display: flex;
+          align-items: flex-end;
+          white-space: nowrap;
+          flex-grow: 1;
+        }
+      }
+
+      .mat-divider-vertical {
+        margin: -1rem 1rem;
+      }
+
+      b {
+        color: rgb(118, 118, 118);
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+<div class="delivery-info">
+  <div class="delivery-info__image-container">
+    <img src="{{companyInfo.companyBackground}}" alt="company background">
+  </div>
+  <div class="delivery-info__logo-container">
+    <img src="{{companyInfo.companyLogo}}" alt="company logo">
+  </div>
+
+  <mat-card class="delivery-info__main">
+    <h2>{{companyInfo.name}}</h2>
+  </mat-card>
+  <div class="delivery-info__menu">
+    <mat-card class="delivery-info__menu-item" *ngFor="let item of companyInfo.items">
+      <img src="{{item.image}}" alt="">
+      <div class="delivery-info__menu-item-description">
+        <h2>{{item.name}}</h2>
+        {{item.description}}
+
+        <div class="delivery-info__menu-item-bottom">
+          <b>{{item.weight}}g</b>
+          <b>{{item.price}}$</b>
+        </div>
+      </div>
+      <mat-divider [vertical]="true"></mat-divider>
+      <div class="delivery-info__menu-item-quantity">
+        <button mat-mini-fab color="primary" aria-label="Icon button with a plus one icon">
+          +1
+        </button>
+        <button mat-mini-fab color="accent" aria-label="Icon button with a plus one icon">
+          -1
+        </button>
+        <div>
+          <b>Quantity: 0</b>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>
+

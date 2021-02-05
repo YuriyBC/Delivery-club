@@ -13,10 +13,12 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
 import { FiltrationComponent } from './filtration/filtration.component';
 import { SortingPanelComponent } from './sorting-panel/sorting-panel.component';
 import { DeliveryDetailsPage } from './delivery-details-page/delivery-details-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { DeliveryInfoComponent } from './delivery-info/delivery-info.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { HomePageComponent } from './home-page/home-page.component';
     SortingPanelComponent,
     DeliveryDetailsPage,
     HomePageComponent,
+    DeliveryInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +42,7 @@ import { HomePageComponent } from './home-page/home-page.component';
     MatDividerModule,
     MatSliderModule,
     MatSelectModule,
+    MatButtonModule,
   ],
   providers: [ApiProvider],
   bootstrap: [AppComponent],
