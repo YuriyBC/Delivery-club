@@ -37,7 +37,57 @@ export class DeliveryInfoComponent implements OnInit {
     }
   }
 
+  getCategories () {
+    if (!this.companyInfo.category) {
+      return '';
+    }
+
+    return this.companyInfo.category.join(', ')
+  }
+
+  getCuisines () {
+    if (!this.companyInfo.cuisine) {
+      return '';
+    }
+
+    return this.companyInfo.cuisine.join(', ')
+  }
+
+  getTime () {
+    return this.companyInfo.delivery_time_average / 60;
+  }
+
+  getRating () {
+    if (!this.companyInfo.rating) {
+      return '';
+    }
+
+    let rating = this.companyInfo.rating.toFixed(2);
+
+    if (rating.toString().length === 1) {
+      rating = rating + '.00';
+    }
+
+    return rating;
+  }
+
+  getWorkingHours () {
+    if (!this.companyInfo.workTimeStart || !this.companyInfo.workTimeEnd) {
+      return '';
+    }
+
+    return `${this.companyInfo.workTimeStart / 60 / 60}:00 - ${this.companyInfo.workTimeEnd / 60 / 60}:00`;
+  }
+
   getQuantity (id: number) {
     return this.basketItems.filter(item => item.id === id).length;
+  }
+
+  getAddress () {
+    if (!this.companyInfo.city) {
+      return '';
+    }
+
+    return `${this.companyInfo.city}, ${this.companyInfo.line1}, ${this.companyInfo.building}`;
   }
 }

@@ -7,7 +7,40 @@
   </div>
 
   <mat-card class="delivery-info__main">
-    <h2>{{companyInfo.name}}</h2>
+    <div>
+      <h2>{{companyInfo.name}}</h2>
+      Categories: <span>{{getCategories()}}</span> <br>
+      Cuisines: <span>{{getCuisines()}}</span>
+    </div>
+    <div class="delivery-info__main-right">
+      <div class="info-item">
+        <mat-icon aria-hidden="false" aria-label="Timer icon">multiline_chart</mat-icon>
+        <span>{{getTime()}} min</span>
+      </div>
+      <div class="info-item">
+        <mat-icon aria-hidden="false" aria-label="Timer icon">star_half</mat-icon>
+        <span>{{getRating()}}</span>
+      </div>
+      <div class="info-item">
+        <mat-icon aria-hidden="false" aria-label="Timer icon">assignment</mat-icon>
+        <span>Average check: {{companyInfo.price_average}}$</span>
+      </div>
+    </div>
+    <div class="delivery-info__main-right">
+      <div class="info-item">
+        <mat-icon aria-hidden="false" aria-label="Clock icon">access_time</mat-icon>
+        <span>Office hours: {{getWorkingHours()}}</span>
+      </div>
+      <div class="info-item">
+        <mat-icon aria-hidden="false" aria-label="Home icon">business</mat-icon>
+        <span>Address: {{getAddress()}}</span>
+      </div>
+      <div class="info-item">
+        <mat-icon aria-hidden="false" aria-label="Home icon">thumb_up</mat-icon>
+        <span>Popularity: {{companyInfo.popularity}}</span>
+      </div>
+    </div>
+
   </mat-card>
   <div class="delivery-info__menu">
     <mat-card class="delivery-info__menu-item" *ngFor="let item of companyInfo.items">
@@ -38,7 +71,7 @@
           -1
         </button>
         <div>
-          <b>Quantity: {{getQuantity(item.id)}}</b>
+            <b>Quantity: {{getQuantity(item.id)}}</b>
         </div>
       </div>
     </mat-card>

@@ -44,6 +44,9 @@ export interface DeliveryInfo {
   companyLogo: string;
   companyBackground: string;
   items: MenuEntity[];
+  city: string,
+  line1: string,
+  building: string,
 }
 
 export interface MenuEntity {

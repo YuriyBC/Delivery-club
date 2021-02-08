@@ -10,6 +10,9 @@ export default {
   delivery_time_average: 3300,
   delivery_distance_average: 20000,
   rating: 4.233112,
+  city: 'Brest',
+  line1: 'Sovietskaya',
+  building: '71',
   popularity: '2130',
   workTimeStart: 28800, // 08:00
   workTimeEnd: 57600, // 16:00
