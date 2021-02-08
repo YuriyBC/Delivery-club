@@ -11,12 +11,17 @@ import { DeliveryInfo, MenuEntity } from '../types/shared';
 })
 export class DeliveryInfoComponent implements OnInit {
   companyInfo: DeliveryInfo = {} as any;
+  basketItems: MenuEntity[] = [];
 
   constructor(
     private apiProvider: ApiProvider,
     private route: ActivatedRoute,
     private basketService: BasketService = new BasketService(),
-  ) { }
+  ) {
+    this.basketService.eventEmitter.subscribe((basketItems: MenuEntity[]) => {
+      this.basketItems = basketItems;
+    });
+  }
 
   async ngOnInit() {
     this.companyInfo = await this.apiProvider.getDeliveryInfo(this.route.snapshot.params.id);
@@ -30,5 +35,9 @@ export class DeliveryInfoComponent implements OnInit {
     } else {
       this.basketService.removeBasketItem(item as MenuEntity);
     }
+  }
+
+  getQuantity (id: number) {
+    return this.basketItems.filter(item => item.id === id).length;
   }
 }

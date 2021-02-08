@@ -1,23 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { MenuEntity } from '../types/shared';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BasketService {
-  public observable: Observable<MenuEntity[]> = new Observable(sub => {
-    sub.next(0 as any)
-    this.sub = sub
-  });
+  public eventEmitter = new EventEmitter();
   basketItems: MenuEntity[] = [];
-  sub: any;
-
 
   addBasketItem (item: MenuEntity) {
     this.basketItems.push(item);
-    console.log(this.sub)
-    // this.sub.next(this.basketItems);
+    this.eventEmitter.emit(this.basketItems);
   }
 
   removeBasketItem (item: any) {
@@ -26,6 +19,6 @@ export class BasketService {
     if (index > -1) {
       this.basketItems.splice(index, 1);
     }
-    this.sub.next(this.basketItems);
+    this.eventEmitter.emit(this.basketItems);
   }
 }
