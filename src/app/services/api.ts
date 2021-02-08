@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import deliveryList from '../mocks/delivery-list';
 import deliveryInfo from '../mocks/delivery-info';
-import { DeliveryItem } from "../types/shared";
+import { DeliveryInfo, DeliveryItem } from '../types/shared';
 
 @Injectable()
 export class ApiProvider {
@@ -11,7 +11,7 @@ export class ApiProvider {
     });
   }
 
-  async getDeliveryInfo (id: string) {
+  async getDeliveryInfo (id: string) :Promise<DeliveryInfo> {
     return new Promise((resolve) => {
       resolve(deliveryInfo);
     });

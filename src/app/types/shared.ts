@@ -26,3 +26,32 @@ export interface SortingOption {
   displayName: string;
   value: string;
 }
+
+export interface DeliveryInfo {
+  id: number;
+  name: string;
+  category: string[];
+  cuisine: string[];
+  price_average: number;
+  price_currency: string;
+  delivery_time_average: number;
+  delivery_distance_average: number;
+  rating: number;
+  popularity: string;
+  workTimeStart: number;
+  workTimeEnd: number;
+  img: string;
+  companyLogo: string;
+  companyBackground: string;
+  items: MenuEntity[];
+}
+
+export interface MenuEntity {
+  id: number;
+  type: string;
+  name: string;
+  description: string;
+  price: number;
+  weight: number;
+  image: string;
+}

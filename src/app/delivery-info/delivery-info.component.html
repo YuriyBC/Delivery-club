@@ -23,10 +23,18 @@
       </div>
       <mat-divider [vertical]="true"></mat-divider>
       <div class="delivery-info__menu-item-quantity">
-        <button mat-mini-fab color="primary" aria-label="Icon button with a plus one icon">
+        <button
+          (click)="updateCount(item.id, 1)"
+          mat-mini-fab color="primary"
+          aria-label="Icon button with a plus one icon"
+          >
           +1
         </button>
-        <button mat-mini-fab color="accent" aria-label="Icon button with a plus one icon">
+        <button
+          (click)="updateCount(item.id, 0)"
+          mat-mini-fab color="accent"
+          aria-label="Icon button with a plus one icon"
+        >
           -1
         </button>
         <div>
@@ -36,4 +44,3 @@
     </mat-card>
   </div>
 </div>
-

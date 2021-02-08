@@ -1,3 +1,5 @@
+import { DeliveryInfo } from '../types/shared';
+
 export default {
   id: 2131,
   name: 'Pizza italiano',
@@ -61,4 +63,4 @@ export default {
       image: 'https://img.cdn4dd.com/cdn-cgi/image/fit=contain,width=300,format=auto,quality=50/https://cdn.doordash.com/media/photos/8b3dab4a-c561-459c-be46-81df86e0b31f-retina-large-jpeg',
     }
   ],
-};
+} as DeliveryInfo;
