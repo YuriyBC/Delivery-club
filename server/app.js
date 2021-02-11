@@ -50,7 +50,6 @@ app.post('/api/auth/signup', auth.optional, async (req, res) => {
     .then(() => res.json({ user: user.toAuthJSON() }));
 });
 
-
 app.post('/api/auth/login', auth.optional, (req, res, next) => {
   const userData = req.body;
 
@@ -88,6 +87,17 @@ app.post('/api/auth/login', auth.optional, (req, res, next) => {
 
     return res.status(400).info;
   })(req, res, next);
+});
+
+app.get('/api/current', auth.required, (req, res, next) => {
+  return new db.user.findById('')
+    .then((user) => {
+      if(!user) {
+        return res.sendStatus(400);
+      }
+
+      return res.json({ user: user.toAuthJSON() });
+    });
 });
 
 app.listen(port, () => {
