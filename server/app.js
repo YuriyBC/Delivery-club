@@ -1,18 +1,13 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+
 const app = express();
 const port = 3000;
 
 const db = require("./models");
 const dbConfig = require('./db.config');
-const Role = db.role;
-
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
 
 db.mongoose
   .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
@@ -21,35 +16,41 @@ db.mongoose
   })
   .then(() => {
     console.log("Successfully connect to MongoDB.");
-    initial();
   })
   .catch(err => {
     console.error("Connection error", err);
     process.exit();
   });
 
-function initial() {
-  Role.estimatedDocumentCount((err, count) => {
-    if (!err && count === 0) {
-      new Role({
-        name: "user"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
+app.use(bodyParser.json());
 
-        console.log("added user to roles collection");
-      });
+app.post('/api/auth/signup', async (req, res) => {
+  if (await db.user.findOne({ username: req.body.username })) {
+    throw 'Username "' + userParam.username + '" is already taken';
+  }
 
-      new Role({
-        name: "admin"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
+  const user = new db.user(req.body);
 
-        console.log("added admin to roles collection");
-      });
-    }
-  });
-}
+  user.save();
+  console.log(user, req.body)
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+});
+
+passport.use(new LocalStrategy({
+  usernameField: 'user[email]',
+  passwordField: 'user[password]',
+}, (email, password, done) => {
+  db.user.findOne({ email })
+    .then((user) => {
+      if(!user) {
+        return done(null, false, { errors: { 'email or password': 'is invalid' } });
+      }
+
+      return done(null, user);
+    }).catch(done);
+}));
+
+
