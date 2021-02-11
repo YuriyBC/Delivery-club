@@ -1,10 +1,10 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 
 const { Schema } = mongoose;
 
-const User = new Schema ({
+const User = new Schema({
     username: String,
     email: String,
     hash: String,
@@ -41,4 +41,4 @@ User.methods.toAuthJSON = function () {
   };
 };
 
-module.exports = User;
+module.exports = mongoose.model('User', User);
