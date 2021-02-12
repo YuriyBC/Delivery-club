@@ -19,6 +19,7 @@ import { SortingPanelComponent } from './sorting-panel/sorting-panel.component';
 import { DeliveryDetailsPage } from './delivery-details-page/delivery-details-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { DeliveryInfoComponent } from './delivery-info/delivery-info.component';
+import { AuthService } from './services/auth';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { DeliveryInfoComponent } from './delivery-info/delivery-info.component';
     MatSelectModule,
     MatButtonModule,
   ],
-  providers: [ApiProvider],
+  providers: [ApiProvider, AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
