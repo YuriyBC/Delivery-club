@@ -1,0 +1,19 @@
+.registration {
+  display: flex;
+  justify-content: center;
+  padding-top: 70px;
+
+  &-container {
+    width: 360px;
+    background: white;
+    padding: 1rem 1rem;
+
+    h1 {
+      text-align: center;
+    }
+
+    h3 {
+      text-align: center;
+    }
+  }
+}

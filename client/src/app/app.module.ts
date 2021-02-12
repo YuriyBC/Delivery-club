@@ -14,12 +14,16 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { FiltrationComponent } from './filtration/filtration.component';
 import { SortingPanelComponent } from './sorting-panel/sorting-panel.component';
 import { DeliveryDetailsPage } from './delivery-details-page/delivery-details-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { DeliveryInfoComponent } from './delivery-info/delivery-info.component';
 import { AuthService } from './services/auth';
+import { RegistrationPageComponent } from './registration-page/registration-page.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,8 @@ import { AuthService } from './services/auth';
     DeliveryDetailsPage,
     HomePageComponent,
     DeliveryInfoComponent,
+    RegistrationPageComponent,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +50,8 @@ import { AuthService } from './services/auth';
     MatSliderModule,
     MatSelectModule,
     MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [ApiProvider, AuthService],
   bootstrap: [AppComponent],
