@@ -16,6 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FiltrationComponent } from './filtration/filtration.component';
 import { SortingPanelComponent } from './sorting-panel/sorting-panel.component';
 import { DeliveryDetailsPage } from './delivery-details-page/delivery-details-page.component';
@@ -52,6 +53,8 @@ import { LoginPageComponent } from './login-page/login-page.component';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [ApiProvider, AuthService],
   bootstrap: [AppComponent],

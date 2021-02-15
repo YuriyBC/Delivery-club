@@ -7,24 +7,29 @@
       <div>
         <mat-form-field appearance="fill">
           <mat-label>First name</mat-label>
-          <input matInput required>
+          <input matInput [formControl]="firstName" required>
+          <mat-error *ngIf="firstName.invalid">First name is not provided</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Last name</mat-label>
-          <input matInput required>
+          <input matInput [formControl]="lastName" required>
+          <mat-error *ngIf="lastName.invalid">Last name is not provided</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
-          <input matInput required>
+          <input matInput [formControl]="email" required>
+          <mat-error *ngIf="email.invalid">Email is not provided</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Password</mat-label>
-          <input matInput required>
+          <input matInput required [formControl]="password">
+          <mat-error *ngIf="email.invalid">Password is not provided</mat-error>
         </mat-form-field>
       </div>
+      <button (click)="onSubmit($event)" mat-flat-button color="primary">Submit</button>
     </div>
 </div>
 
